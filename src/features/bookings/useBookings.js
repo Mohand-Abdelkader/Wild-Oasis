@@ -14,17 +14,21 @@ export function useBookings() {
       : { filed: "status", value: filterValue };
 
   //2 Sort
-  const sortByRaw = searchParams.get("sortBy") || "startData-desc";
+  const sortByRaw = searchParams.get("sortBy") || "startDate-desc";
   const [filed, direction] = sortByRaw.split("-");
   const sortBy = { filed, direction };
+
+  //Pagination
+  const page = !searchParams.get("page") ? 1 : Number(searchParams.get("page"));
+
   const {
     isLoading,
-    data: bookings,
+    data: { data: bookings, count } = {},
     error,
   } = useQuery({
-    queryKey: ["bookings", filter, sortBy],
-    queryFn: () => getBookings({ filter, sortBy }),
+    queryKey: ["bookings", filter, sortBy, page],
+    queryFn: () => getBookings({ filter, sortBy, page }),
   });
 
-  return { isLoading, bookings, error };
+  return { isLoading, bookings, error, count };
 }

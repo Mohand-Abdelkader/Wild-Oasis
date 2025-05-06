@@ -6,9 +6,13 @@ import Heading from "../../ui/Heading";
 import ButtonGroup from "../../ui/ButtonGroup";
 import Button from "../../ui/Button";
 import ButtonText from "../../ui/ButtonText";
-
+import CheckBox from "../../ui/Checkbox";
 import { useMoveBack } from "../../hooks/useMoveBack";
-
+import { useBooking } from "../bookings/useBooking";
+import Spinner from "../../ui/Spinner";
+import { useEffect, useState } from "react";
+import { formatCurrency } from "../../utils/helpers";
+import { useCheckin } from "./useCheckin";
 const Box = styled.div`
   /* Box */
   background-color: var(--color-grey-0);
@@ -18,10 +22,13 @@ const Box = styled.div`
 `;
 
 function CheckinBooking() {
+  const [confirmPaid, setConfirmPaid] = useState(false);
+  const { booking, isLoading } = useBooking();
+
+  useEffect(() => setConfirmPaid(booking?.isPaid ?? false), [booking]);
   const moveBack = useMoveBack();
-
-  const booking = {};
-
+  const { checkin, isCheckingIn } = useCheckin();
+  if (isLoading) return <Spinner />;
   const {
     id: bookingId,
     guests,
@@ -31,7 +38,12 @@ function CheckinBooking() {
     numNights,
   } = booking;
 
-  function handleCheckin() {}
+  function handleCheckin() {
+    if (!confirmPaid) {
+      return;
+    }
+    checkin(bookingId);
+  }
 
   return (
     <>
@@ -41,9 +53,21 @@ function CheckinBooking() {
       </Row>
 
       <BookingDataBox booking={booking} />
-
+      <Box>
+        <CheckBox
+          checked={confirmPaid}
+          onChange={() => setConfirmPaid((i) => !i)}
+          id={"confirm"}
+          disabled={confirmPaid || isCheckingIn}
+        >
+          I Confirm that {guests.fullName} has paid total amount of{" "}
+          {formatCurrency(totalPrice)}
+        </CheckBox>
+      </Box>
       <ButtonGroup>
-        <Button onClick={handleCheckin}>Check in booking #{bookingId}</Button>
+        <Button disabled={!confirmPaid || isCheckingIn} onClick={handleCheckin}>
+          Check in booking #{bookingId}
+        </Button>
         <Button variation="secondary" onClick={moveBack}>
           Back
         </Button>

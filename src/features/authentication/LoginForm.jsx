@@ -5,6 +5,7 @@ import Input from "../../ui/Input";
 import FormRowVertical from "../../ui/FormRowVertical";
 import { useLogin } from "./useLogin";
 import SpinnerMini from "../../ui/SpinnerMini";
+import CabinTable from "../cabins/CabinTable";
 function LoginForm() {
   const [email, setEmail] = useState("Mohand27m@gmail.com");
   const [password, setPassword] = useState("123456");
@@ -52,6 +53,7 @@ function LoginForm() {
           {!isLoading ? "login" : <SpinnerMini />}
         </Button>
       </FormRowVertical>
+      <CabinTable />
     </Form>
   );
 }

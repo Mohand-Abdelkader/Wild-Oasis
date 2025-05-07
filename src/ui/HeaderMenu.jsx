@@ -3,6 +3,7 @@ import Logout from "../features/authentication/Logout";
 import ButtonIcon from "./ButtonIcon";
 import { HiOutlineUser } from "react-icons/hi";
 import { useNavigate } from "react-router-dom";
+import DarkMoodToggle from "./DarkMoodToggle";
 
 const StyledHeaderMenu = styled.ul`
   display: flex;
@@ -20,6 +21,9 @@ function HeaderMenu() {
       </li>
       <li>
         <Logout />
+      </li>
+      <li>
+        <DarkMoodToggle />
       </li>
     </StyledHeaderMenu>
   );

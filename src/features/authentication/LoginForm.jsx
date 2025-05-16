@@ -53,7 +53,7 @@ function LoginForm() {
           {!isLoading ? "login" : <SpinnerMini />}
         </Button>
       </FormRowVertical>
-      <CabinTable />
+     
     </Form>
   );
 }

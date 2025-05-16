@@ -1,8 +1,37 @@
-# React + Vite
+# 🏕️ The Wild Oasis
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to **The Wild Oasis** — a modern, secure, and optimized solution for managing cabins and bookings in a streamlined way.
 
-Currently, two official plugins are available:
+## 🚀 About the Project
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The Wild Oasis simplifies and optimizes cabin management and bookings. With built-in authentication, it ensures secure access and a personalized experience for accommodation workers.
+
+### ✨ Main Features
+
+- **User Management**  
+  Add new employees and update existing user settings with ease.
+
+- **Cabin Management**  
+  Maintain cabin details, including capacity and availability.
+
+- **Booking Management**  
+  Manage reservations effortlessly, including check-in and check-out processes. Extra services like breakfast can be handled directly from the booking details.
+
+- **Dashboard**  
+  A comprehensive dashboard shows daily arrivals and departures. It also displays occupancy rates and revenue via graphs for quick performance insights.
+
+- **Security & Privacy**  
+  Built with advanced security practices using **Supabase** to protect user and booking data.
+
+---
+
+## 🛠️ Built With
+
+- [Vite](https://vitejs.dev/)
+- [React](https://react.dev/)
+- [Styled Components](https://styled-components.com/)
+- [React Router](https://reactrouter.com/)
+- [React Query](https://tanstack.com/query/latest)
+- [Supabase](https://supabase.com/)
+
+---
